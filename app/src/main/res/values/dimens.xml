@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="attraction_detail_header">180dp</dimen>
+    <dimen name="attraction_min_header">100dp</dimen>
+
+</resources>
