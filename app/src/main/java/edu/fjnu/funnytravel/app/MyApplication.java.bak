@@ -35,4 +35,3 @@ public class MyApplication extends Application {
         return instance;
     }
 }
-帅气陈吃苹果
