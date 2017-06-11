@@ -34,4 +34,7 @@ public class MyApplication extends Application {
     public static MyApplication getInstance() {
         return instance;
     }
+    private void adTest() {
+        
+    }
 }
