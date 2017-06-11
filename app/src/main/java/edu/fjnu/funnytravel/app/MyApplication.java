@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.app;
+﻿package edu.fjnu.funnytravel.app;
 
 import android.app.Application;
 
@@ -37,4 +37,8 @@ public class MyApplication extends Application {
     private void adTest() {
         
     }
+
+	private void addTest() {
+
+	}
 }
