@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,11 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.sqchen.iubao.R;
 import edu.sqchen.iubao.adapter.StrategyListAdapter;
+import edu.sqchen.iubao.http.ApiUrl;
+import edu.sqchen.iubao.http.NetManager;
+import edu.sqchen.iubao.http.RxManager;
+import edu.sqchen.iubao.http.RxSubscriber;
+import edu.sqchen.iubao.http.service.AttractionService;
 import edu.sqchen.iubao.model.entity.Strategy;
 import edu.sqchen.iubao.widget.ScrollListView;
 
@@ -47,7 +53,6 @@ public class StrategyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_strategy, container, false);
         unbinder = ButterKnife.bind(this, view);
         initListView();
-
         return view;
     }
 
@@ -57,7 +62,6 @@ public class StrategyFragment extends Fragment {
         mStrategyListView.setAdapter(mListAdapter);
         mStrategyListView.setEmptyView(mLinEmptyView);
     }
-
 
     @Override
     public void onDestroyView() {

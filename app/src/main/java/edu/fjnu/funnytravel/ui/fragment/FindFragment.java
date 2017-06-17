@@ -89,7 +89,7 @@ public class FindFragment extends Fragment implements ExpandingFragment.OnExpand
     }
 
     private void initToolbar() {
-        mToolBarFind.setTitle("·¢ÏÖ");
+        mToolBarFind.setTitle("å‘ç°");
         mToolBarFind.setTitleTextColor(Color.WHITE);
     }
 

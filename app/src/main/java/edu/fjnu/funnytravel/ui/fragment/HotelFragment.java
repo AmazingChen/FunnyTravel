@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.borax12.materialdaterangepicker.date.DatePickerDialog;
 import com.google.gson.Gson;
@@ -30,6 +31,7 @@ import edu.sqchen.iubao.R;
 import edu.sqchen.iubao.adapter.HotelListAdapter;
 import edu.sqchen.iubao.app.MyApplication;
 import edu.sqchen.iubao.http.ApiUrl;
+import edu.sqchen.iubao.http.HttpResult;
 import edu.sqchen.iubao.http.service.AttractionService;
 import edu.sqchen.iubao.http.NetManager;
 import edu.sqchen.iubao.http.RxManager;
@@ -98,6 +100,9 @@ public class HotelFragment extends Fragment implements DatePickerDialog.OnDateSe
         return view;
     }
 
+    /**
+     * 初始化下拉刷新
+     */
     private void initRefresh() {
         mHotelRefresh.setProgressBackgroundColorSchemeColor(Color.WHITE);
         mHotelRefresh.setColorSchemeResources(android.R.color.holo_blue_light,
@@ -114,6 +119,19 @@ public class HotelFragment extends Fragment implements DatePickerDialog.OnDateSe
             }
         });
         mRefreshListener.onRefresh();
+    }
+
+    /**
+     * 初始化DatePickerDialog
+     */
+    private void initDateDialog() {
+        Log.d("hotel","initDateDialog");
+        mCalendar = Calendar.getInstance();
+        mDatePicker = DatePickerDialog.newInstance(
+                this,
+                mCalendar.get(Calendar.YEAR),
+                mCalendar.get(Calendar.MONTH),
+                mCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
     /**
@@ -184,12 +202,17 @@ public class HotelFragment extends Fragment implements DatePickerDialog.OnDateSe
             return false;
         }
         switch(menuItem.getItemId()) {
+            //收藏酒店
             case ITEM_COLLECT:
                 Log.d("hotel","onContextItemSelected: OUTSIDE");
+                String hotelId = String.valueOf(mHotelList.get(selectPosition).getId());
+                collectHotel("sqchen",hotelId);
                 break;
+            //评价酒店
             case ITEM_EVALUATE:
                 Log.d("hotel","onContextItemSelected: OUTSIDE");
                 break;
+            //将酒店加入行程
             case ITEM_ADD:
                 Log.d("hotel","onContextItemSelected: ITEM_ADD");
                 mDatePicker.show(getActivity().getFragmentManager(),"DatePicker");
@@ -197,21 +220,7 @@ public class HotelFragment extends Fragment implements DatePickerDialog.OnDateSe
             default:
                 break;
         }
-
         return true;
-    }
-
-    /**
-     * 初始化DatePickerDialog
-     */
-    private void initDateDialog() {
-        Log.d("hotel","initDateDialog");
-        mCalendar = Calendar.getInstance();
-        mDatePicker = DatePickerDialog.newInstance(
-                this,
-                mCalendar.get(Calendar.YEAR),
-                mCalendar.get(Calendar.MONTH),
-                mCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
     @Override
@@ -237,6 +246,29 @@ public class HotelFragment extends Fragment implements DatePickerDialog.OnDateSe
         Trip trip = new Trip(destinationId,destinationName,imgUrl,beginTimeStr,overTimeStr,"null weather info","sqchen");
         saveTrip(trip);
     }
+
+    private void collectHotel(String username,String hotelId) {
+        AttractionService service = NetManager.getInstance().createWithUrl(AttractionService.class,ApiUrl.PHP_USER_BASE_URL);
+        RxManager.getInstance().doSubscribe(service.addCollection(username, hotelId),
+                new RxSubscriber<HttpResult>() {
+                    @Override
+                    protected void _onError(Throwable e) {
+                        Toast.makeText(getContext(),"收藏失败！请检查网络设置！",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    protected void _onNext(HttpResult httpResult) {
+                        if(httpResult.getCode() != 1) {
+                            if(httpResult.getCode() == 1) {
+                                Toast.makeText(getContext(),"收藏成功！",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(),"收藏失败！" + httpResult.getMsg(),Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+    }
+
 
     /**
      * 加入行程

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="人间瑶池仙境"
+        android:textColor="@color/text_black_light"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/detail_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#CCCCCC"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        />
+
+    <TextView
+        android:id="@+id/detail_referral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="翡翠谷的特色在于水，谷中有大大小小美如翡翠，丽若彩珠，流光溢彩，灵秀绝伦的潭池达一百多个，被人们赞为“人间瑶池仙境”。并被称赞曰“未游过翡翠谷彩池者，不能称到过黄山。黄山之雄奇，见于莲花、天都，黄山的美梦必从翡翠谷彩池中浮出"
+        android:textColor="@color/text_grey"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        />
+</LinearLayout>

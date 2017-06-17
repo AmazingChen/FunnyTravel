@@ -1,11 +1,11 @@
-package edu.fjnu.funnytravel.http;
+package edu.sqchen.iubao.http;
 
 import android.content.Context;
 import android.util.Log;
 
 import java.io.IOException;
 
-import edu.fjnu.funnytravel.app.MyApplication;
+import edu.sqchen.iubao.app.MyApplication;
 import rx.Subscriber;
 
 /**

@@ -47,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/comment_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="非常方便，有了它既能轻松游玩，又能了解景点要是能更详细点就太好了。"

@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.http.service;
+package edu.sqchen.iubao.http.service;
 
 import java.util.List;
 
@@ -58,5 +58,5 @@ public interface TripService {
      */
     @FormUrlEncoded
     @POST("trip/updatetrip")
-    Observable<HttpResultT<Trip>> updateTrip(@Field("tripId") int tripId, @Field("tripJson") String tripJson);
+    Observable<HttpResultT<Trip>> updateTrip(@Field("tripId") int tripId,@Field("tripJson") String tripJson);
 }

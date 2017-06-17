@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.http;
+package edu.sqchen.iubao.http;
 
 /**
  * Created by Administrator on 2017/5/18.

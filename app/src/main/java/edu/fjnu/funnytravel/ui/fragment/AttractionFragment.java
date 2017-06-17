@@ -156,22 +156,23 @@ public class AttractionFragment extends Fragment implements DatePickerDialog.OnD
         mAttractionListView.setOnCreateContextMenuListener(this);
     }
 
+
     /**
-     * 此处加载数据存在问题，应该是tablayout中fragment的生命周期问题
-     * 暂时先不用mvp模式来获取景点信息
-     * 先采用在当前fragment直接获取，即下面的getAttractionData()方法
+     * 初始化DatePickerDialog
      */
-    private void loadAttraction() {
-        mAdapter = new AttractionListAdapter(getContext(), mAttractionList);
-        mAttractionListView.setAdapter(mAdapter);
-//        mAttractionList = getAttractionList();
+    private void initDateDialog() {
+        mCalendar = Calendar.getInstance();
+        mDatePicker = DatePickerDialog.newInstance(
+                this,
+                mCalendar.get(Calendar.YEAR),
+                mCalendar.get(Calendar.MONTH),
+                mCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
     /**
      * 获取当前城市所有景点数据
      */
     private void getAttractionData() {
-//        mLoadingDialog.show();
         AttractionService attractionService = NetManager.getInstance().create(AttractionService.class);
         RxManager.getInstance()
                 .doUnifySubscribe(attractionService.getAttractionsInfo(
@@ -218,9 +219,12 @@ public class AttractionFragment extends Fragment implements DatePickerDialog.OnD
     public boolean onContextItemSelected(MenuItem menuItem) {
         Intent mIntent = null;
         switch(menuItem.getItemId()) {
+            //收藏景点
             case ITEM_COLLECT:
-
+                String attractionId = mAttractionList.get(selectPosition).getSid();
+                collectAttraction("sqchen",attractionId);
                 break;
+            //评价景点
             case ITEM_EVALUATE:
                 long seconds = System.currentTimeMillis();
                 AttractionComment attractionComment = new AttractionComment(mAttractionList.get(selectPosition).getSid(),
@@ -229,9 +233,11 @@ public class AttractionFragment extends Fragment implements DatePickerDialog.OnD
                         DateStrUtil.timeStamp2Date(seconds,null));
                 addComment(attractionComment);
                 break;
+            //添加景点攻略
             case ITEM_STRATEGY:
 
                 break;
+            //将景点加入行程
             case ITEM_ADD:
                     mDatePicker.show(getActivity().getFragmentManager(),"DatePicker");
                 break;
@@ -239,18 +245,6 @@ public class AttractionFragment extends Fragment implements DatePickerDialog.OnD
                 break;
         }
         return true;
-    }
-
-    /**
-     * 初始化DatePickerDialog
-     */
-    private void initDateDialog() {
-        mCalendar = Calendar.getInstance();
-        mDatePicker = DatePickerDialog.newInstance(
-                this,
-                mCalendar.get(Calendar.YEAR),
-                mCalendar.get(Calendar.MONTH),
-                mCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
     @Override
@@ -272,7 +266,6 @@ public class AttractionFragment extends Fragment implements DatePickerDialog.OnD
         String beginTimeStr = DateStrUtil.getDateStr(monthOfYear,dayOfMonth);
         //行程结束时间
         String overTimeStr = DateStrUtil.getDateStr(monthOfYearEnd,dayOfMonthEnd);
-        Log.d("attr","开始：" + beginTimeStr + "结束：" + overTimeStr);
         Trip trip = new Trip(destinationId,destinationName,imgUrl,beginTimeStr,overTimeStr,"null weather info","sqchen");
         saveTrip(trip);
     }
@@ -282,12 +275,9 @@ public class AttractionFragment extends Fragment implements DatePickerDialog.OnD
      * @param trip
      */
     private void saveTrip(Trip trip) {
-        Log.d(this.getClass().getSimpleName(),"正在保存数据...");
         //将Trip对象转换为JSON数据，作为参数传递，发送到后台
         Gson gson = new Gson();
         String tripJson = gson.toJson(trip);
-        Log.d("attr",tripJson);
-
         AttractionService attractionService = NetManager
                 .getInstance()
                 .createWithUrl(AttractionService.class, ApiUrl.PHP_USER_BASE_URL);
@@ -308,6 +298,31 @@ public class AttractionFragment extends Fragment implements DatePickerDialog.OnD
                                 "行程制定成功！",
                                 Toast.LENGTH_SHORT)
                                 .show();
+                    }
+                });
+    }
+
+    /**
+     * 收藏景点
+     * @param username
+     * @param attractionId
+     */
+    private void collectAttraction(String username,String attractionId) {
+        AttractionService service = NetManager.getInstance().createWithUrl(AttractionService.class,ApiUrl.PHP_USER_BASE_URL);
+        RxManager.getInstance().doSubscribe(service.addCollection(username, attractionId),
+                new RxSubscriber<HttpResult>() {
+                    @Override
+                    protected void _onError(Throwable e) {
+                        Toast.makeText(getContext(),"收藏失败！请检查网络设置！",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    protected void _onNext(HttpResult httpResult) {
+                        if(httpResult.getCode() == 1) {
+                            Toast.makeText(getContext(),"收藏成功！",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(),"收藏失败！" + httpResult.getMsg(),Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }

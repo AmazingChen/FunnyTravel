@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.widget;
+package edu.sqchen.iubao.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

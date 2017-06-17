@@ -1,9 +1,8 @@
-﻿package edu.fjnu.funnytravel.app;
+package edu.sqchen.iubao.app;
 
 import android.app.Application;
 
-import edu.fjnu.funnytravel.entity.City;
-
+import edu.sqchen.iubao.model.entity.City;
 
 /**
  * Created by Administrator on 2017/4/29.

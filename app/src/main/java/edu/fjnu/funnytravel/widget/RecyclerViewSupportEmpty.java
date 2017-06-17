@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.widget;
+package edu.sqchen.iubao.widget;
 
 /**
  * Created by Administrator on 2017/5/11.
@@ -75,7 +75,8 @@ public class RecyclerViewSupportEmpty extends RecyclerView {
         super.setAdapter(adapter);
 
         if (adapter != null) {
-            //这里用了观察者模式，同时把这个观察者添加进去
+            //这里用了观察者模式，同时把这个观察者添加进去，
+            // 至于这个模式怎么用，谷歌一下，不多讲了，因为这个涉及到了Adapter的一些原理，感兴趣可以点进去看看源码，还是受益匪浅的
             adapter.registerAdapterDataObserver(emptyObserver);
         }
         //当setAdapter的时候也调一次
