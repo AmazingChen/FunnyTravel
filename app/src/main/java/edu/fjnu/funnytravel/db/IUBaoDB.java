@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.db;
+package edu.sqchen.iubao.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,8 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.fjnu.funnytravel.entity.City;
-
+import edu.sqchen.iubao.model.entity.City;
 
 /**
  * Created by Administrator on 2017/4/23.

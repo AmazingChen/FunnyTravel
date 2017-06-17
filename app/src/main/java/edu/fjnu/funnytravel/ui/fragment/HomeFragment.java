@@ -120,10 +120,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void initTabLayout() {
-        mAttractionFragment = new AttractionFragment();
-        mFragmentList.add(mAttractionFragment);
-        mHotelFragment = new HotelFragment();
-        mFragmentList.add(mHotelFragment);
+            mAttractionFragment = new AttractionFragment();
+            mFragmentList.add(mAttractionFragment);
+            mHotelFragment = new HotelFragment();
+            mFragmentList.add(mHotelFragment);
 
         mTabAdapter = new TabFragmentAdapter(mFragmentList, mTabNameList, getChildFragmentManager(), getContext());
         mViewPagerHome.setAdapter(mTabAdapter);

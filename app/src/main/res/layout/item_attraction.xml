@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/attractions_img"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:background="#CCCCCC"
+        android:scaleType="centerCrop"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/attractions_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="黄山"
+                android:textSize="16sp"
+                android:textColor="@color/text_black"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                />
+
+            <TextView
+                android:id="@+id/attractions_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AAAAA"
+                android:textSize="14sp"
+                android:textColor="#B1B1B1"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/attractions_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:text="安徽省黄山市黄山风景区"
+            android:textColor="#B1B1B1"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

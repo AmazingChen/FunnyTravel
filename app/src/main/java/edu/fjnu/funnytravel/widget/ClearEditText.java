@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.widget;
+package edu.sqchen.iubao.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
 
-import edu.fjnu.funnytravel.R;
-
+import edu.sqchen.iubao.R;
 
 /**
  * Created by Administrator on 2017/4/22.

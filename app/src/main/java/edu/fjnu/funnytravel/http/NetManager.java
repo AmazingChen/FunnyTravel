@@ -1,4 +1,7 @@
-package edu.fjnu.funnytravel.http;
+package edu.sqchen.iubao.http;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;

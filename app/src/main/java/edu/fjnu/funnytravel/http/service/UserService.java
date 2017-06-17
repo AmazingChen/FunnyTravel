@@ -1,5 +1,6 @@
-package edu.fjnu.funnytravel.http.service;
+package edu.sqchen.iubao.http.service;
 
+import edu.sqchen.iubao.http.HttpResult;
 import edu.sqchen.iubao.http.HttpResultT;
 import edu.sqchen.iubao.model.entity.User;
 import retrofit2.Call;
@@ -36,7 +37,14 @@ public interface UserService {
     @POST("login")
     Observable<HttpResultT<User>> userLogin(@Field("userInfo") String userInfo);
 
-
-    @GET("toLogin.do")
-    Call<User> login(@Query("username") String username, @Query("password") String password);
+    /**
+     * 取消收藏
+     * @param username
+     * @param id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("collection/delete")
+    Observable<HttpResult> deleteCollection(@Field("username") String username,
+                                            @Field("id") String id);
 }

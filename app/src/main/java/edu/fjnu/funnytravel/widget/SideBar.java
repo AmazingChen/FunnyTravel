@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.widget;
+package edu.sqchen.iubao.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,8 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.fjnu.funnytravel.R;
-
+import edu.sqchen.iubao.R;
 
 /**
  * Created by Administrator on 2017/4/22.

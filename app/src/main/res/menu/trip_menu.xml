@@ -6,7 +6,7 @@
           android:title="天氣"
           android:orderInCategory="60"
           app:showAsAction="always"
-          android:icon="@drawable/ic_cloud_white_24dp"
+          android:icon="@drawable/ic_cloud_pressed"
           />
 
 </menu>

@@ -45,8 +45,8 @@ import edu.sqchen.iubao.ui.activity.WeatherActivity;
 import edu.sqchen.iubao.widget.RecyclerViewSupportEmpty;
 
 /**
- * »¬¶¯É¾³ı£ºhttps://github.com/daimajia/AndroidSwipeLayout
- * É¾³ıÌáÊ¾£ºhttps://github.com/pedant/sweet-alert-dialog
+ * æ»‘åŠ¨åˆ é™¤ï¼šhttps://github.com/daimajia/AndroidSwipeLayout
+ * åˆ é™¤æç¤ºï¼šhttps://github.com/pedant/sweet-alert-dialog
  * A simple {@link Fragment} subclass.
  */
 public class TripFragment extends Fragment {
@@ -68,9 +68,9 @@ public class TripFragment extends Fragment {
     private Intent mIntent;
     private static final String SELECT_TRIP = "SELECT_TRIP";
 
-    //É¾³ıĞĞ³Ì
+    //åˆ é™¤è¡Œç¨‹
     private static final int ITEM_DELETE = Menu.FIRST;
-    //·ÖÏíĞĞ³Ì
+    //åˆ†äº«è¡Œç¨‹
     private static final int ITEM_SHARE = Menu.FIRST + 1;
     private int selectPosition = -1;
 
@@ -112,7 +112,7 @@ public class TripFragment extends Fragment {
     }
 
     private void initToolbar() {
-        mToolBarTrip.setTitle("ĞĞ³Ì");
+        mToolBarTrip.setTitle("è¡Œç¨‹");
         mToolBarTrip.setTitleTextColor(Color.WHITE);
         mToolBarTrip.inflateMenu(R.menu.trip_menu);
         mToolBarTrip.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -132,7 +132,7 @@ public class TripFragment extends Fragment {
     }
 
     /**
-     * ³õÊ¼»¯RecyclerView¼°ÏÂÀ­Ë¢ĞÂ
+     * åˆå§‹åŒ–RecyclerViewåŠä¸‹æ‹‰åˆ·æ–°
      */
     private void initRecyclerView() {
         mTripRefresh.setProgressBackgroundColorSchemeColor(Color.WHITE);
@@ -148,7 +148,7 @@ public class TripFragment extends Fragment {
         mTripRecyclerview.setLayoutManager(mLayoutManager);
         mTripRecyclerview.setHasFixedSize(true);
         mTripRecyclerview.setEmptyView(mLinEmptyView);
-        //ÉèÖÃÏÔÊ¾¶¯»­
+        //è®¾ç½®æ˜¾ç¤ºåŠ¨ç”»
         mTripRecyclerview.setItemAnimator(new DefaultItemAnimator());
         mTripRecyclerview.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -156,15 +156,15 @@ public class TripFragment extends Fragment {
                 return false;
             }
         });
-        //Ìí¼Ó³¤°´ÉÏÏÂÎÄ²Ëµ¥µÄ¼àÌı,¹²6²½
-        //²Î¿¼Á´½Ó£ºhttps://stackoverflow.com/questions/26466877/how-to-create-context-menu-for-recyclerview
-        //Ô­ÀíÊÇÔÚÊÊÅäÆ÷TripRVAdapterÖĞÀ¹½Ø³¤°´ÊÂ¼ş£¬ÊµÏÖÉÏÏÂÎÄ²Ëµ¥µÄÉú³ÉÊÂ¼ş
-        //µÚ1²½£¬ÎªRecyclerView×¢²áÉÏÏÂÎÄ²Ëµ¥ÊÂ¼ş
+        //æ·»åŠ é•¿æŒ‰ä¸Šä¸‹æ–‡èœå•çš„ç›‘å¬,å…±6æ­¥
+        //å‚è€ƒé“¾æ¥ï¼šhttps://stackoverflow.com/questions/26466877/how-to-create-context-menu-for-recyclerview
+        //åŸç†æ˜¯åœ¨é€‚é…å™¨TripRVAdapterä¸­æ‹¦æˆªé•¿æŒ‰äº‹ä»¶ï¼Œå®ç°ä¸Šä¸‹æ–‡èœå•çš„ç”Ÿæˆäº‹ä»¶
+        //ç¬¬1æ­¥ï¼Œä¸ºRecyclerViewæ³¨å†Œä¸Šä¸‹æ–‡èœå•äº‹ä»¶
         registerForContextMenu(mTripRecyclerview);
     }
 
     /**
-     * ¼ÓÔØĞĞ³ÌÊı¾İ
+     * åŠ è½½è¡Œç¨‹æ•°æ®
      */
     private void loadTripData() {
         mTripList = new ArrayList<>();
@@ -174,17 +174,17 @@ public class TripFragment extends Fragment {
                     @Override
                     protected void _onError(Throwable e) {
                         mTripRefresh.setRefreshing(false);
-                        Toast.makeText(getContext(), "ĞĞ³ÌÊı¾İ»ñÈ¡Ê§°Ü£¡", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "è¡Œç¨‹æ•°æ®è·å–å¤±è´¥ï¼", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     protected void _onNext(List<Trip> tripList) {
                         mTripList = tripList;
-                        Log.d("trip", "µØÖ·ÊÇ£º" + mTripList.get(0).getImageUrl());
-                        Log.d("arrt","ĞĞ³ÌID£º" + tripList.get(0).getTripId());
-//                        Toast.makeText(getContext(), "ĞĞ³ÌÊı¾İ»ñÈ¡³É¹¦£¡", Toast.LENGTH_SHORT).show();
+                        Log.d("trip", "åœ°å€æ˜¯ï¼š" + mTripList.get(0).getImageUrl());
+                        Log.d("arrt","è¡Œç¨‹IDï¼š" + tripList.get(0).getTripId());
+//                        Toast.makeText(getContext(), "è¡Œç¨‹æ•°æ®è·å–æˆåŠŸï¼", Toast.LENGTH_SHORT).show();
                         mAdapter = new TripRVAdapter(getContext(),mTripList);
-                        //È¡ÏûË¢ĞÂ
+                        //å–æ¶ˆåˆ·æ–°
                         mTripRefresh.setRefreshing(false);
                         mTripRecyclerview.setAdapter(mAdapter);
                         mAdapter.setOnItemClickListener(new TripRVAdapter.OnItemClickListener() {
@@ -210,7 +210,7 @@ public class TripFragment extends Fragment {
                 });
     }
 
-    //µÚ6²½£¬ÖØĞ´onContextItemSelected()·½·¨
+    //ç¬¬6æ­¥ï¼Œé‡å†™onContextItemSelected()æ–¹æ³•
     @Override
     public boolean onContextItemSelected(MenuItem menuItem) {
         try {
@@ -221,15 +221,15 @@ public class TripFragment extends Fragment {
         switch (menuItem.getItemId()) {
             case ITEM_DELETE:
                 new SweetAlertDialog(getContext(),SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("É¾³ı´ËĞĞ³Ì£¿")
-                        .setContentText("É¾³ıºó²»¿É»Ö¸´")
-                        .setConfirmText("È·¶¨")
+                        .setTitleText("åˆ é™¤æ­¤è¡Œç¨‹ï¼Ÿ")
+                        .setContentText("åˆ é™¤åä¸å¯æ¢å¤")
+                        .setConfirmText("ç¡®å®š")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 deleteTrip(mTripList.get(selectPosition).getTripId());
-                                sweetAlertDialog.setTitleText("Íê³É")
-                                        .setContentText("´ËĞĞ³ÌÒÑ±»É¾³ı")
+                                sweetAlertDialog.setTitleText("å®Œæˆ")
+                                        .setContentText("æ­¤è¡Œç¨‹å·²è¢«åˆ é™¤")
                                         .setConfirmText("OK")
                                         .setConfirmClickListener(null)
                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
@@ -245,8 +245,8 @@ public class TripFragment extends Fragment {
     }
 
     /**
-     * É¾³ıĞĞ³Ì
-     * @param tripId Ñ¡ÖĞÏîĞĞ³ÌID
+     * åˆ é™¤è¡Œç¨‹
+     * @param tripId é€‰ä¸­é¡¹è¡Œç¨‹ID
      */
     private void deleteTrip(int tripId) {
         TripService tripService = NetManager.getInstance().createWithUrl(TripService.class,ApiUrl.PHP_USER_BASE_URL);
@@ -255,7 +255,7 @@ public class TripFragment extends Fragment {
                 new RxSubscriber<HttpResult>() {
                     @Override
                     protected void _onError(Throwable e) {
-                        Toast.makeText(getContext(), "É¾³ıÊ§°Ü,Çë¼ì²éÍøÂç", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "åˆ é™¤å¤±è´¥,è¯·æ£€æŸ¥ç½‘ç»œ", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -264,9 +264,9 @@ public class TripFragment extends Fragment {
                         if(httpResult.getCode() == 1) {
                             mTripList.remove(selectPosition);
                             mAdapter.notifyDataSetChanged();
-                            Toast.makeText(getContext(), "É¾³ı³É¹¦£¡", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "åˆ é™¤æˆåŠŸï¼", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getContext(), "É¾³ıÊ§°Ü£¡" + httpResult.getMsg(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "åˆ é™¤å¤±è´¥ï¼" + httpResult.getMsg(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

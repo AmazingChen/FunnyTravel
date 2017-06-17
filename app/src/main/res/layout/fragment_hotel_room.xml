@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             tools:context="edu.sqchen.iubao.ui.fragment.HotelRoomFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ExpandableListView
+        android:id="@+id/hotel_room_expand_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </ExpandableListView>
+
+
+</LinearLayout>

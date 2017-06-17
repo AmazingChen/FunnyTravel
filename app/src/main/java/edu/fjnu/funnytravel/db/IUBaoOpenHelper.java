@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.db;
+package edu.sqchen.iubao.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

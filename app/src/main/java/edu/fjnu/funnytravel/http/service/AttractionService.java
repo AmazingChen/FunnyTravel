@@ -1,4 +1,4 @@
-package edu.fjnu.funnytravel.http.service;
+package edu.sqchen.iubao.http.service;
 
 import java.util.List;
 
@@ -6,10 +6,14 @@ import edu.sqchen.iubao.http.HttpResult;
 import edu.sqchen.iubao.http.HttpResultT;
 import edu.sqchen.iubao.model.entity.AttractionComment;
 import edu.sqchen.iubao.model.entity.AttractionDetail;
+import edu.sqchen.iubao.model.entity.Collection;
 import edu.sqchen.iubao.model.entity.HotelDetail;
 import edu.sqchen.iubao.model.entity.ResultData;
+import edu.sqchen.iubao.model.entity.Strategy;
 import edu.sqchen.iubao.model.entity.Ticket;
 import edu.sqchen.iubao.model.entity.Trip;
+import edu.sqchen.iubao.model.entity.User;
+import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -63,7 +67,7 @@ public interface AttractionService {
     @GET("HotelList")
     Observable<ResultData> getHotelData(@Query("cityId") int cityId,
                                         @Query("page") int page,
-                                        @Query("key") String ley);
+                                        @Query("key") String ley );
 
     /**
      * 获取酒店详情数据
@@ -92,7 +96,7 @@ public interface AttractionService {
      */
     @FormUrlEncoded
     @POST("trip")
-    Observable<HttpResultT<Trip>> saveTripInfo(@Field("tripJson") String tripJson);
+    Observable<HttpResultT<Trip>> saveTripInfo( @Field("tripJson") String tripJson );
 
     /**
      * 对景点进行评价
@@ -111,4 +115,20 @@ public interface AttractionService {
     @FormUrlEncoded
     @POST("comment/getcomment")
     Observable<HttpResultT<List<AttractionComment>>> getCommentList(@Field("attractionId") String attractionId);
+
+    /**
+     * 收藏景点
+     * @param username  收藏者用户名
+     * @param id        被收藏者id，包括酒店id和景点id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("collection/add")
+    Observable<HttpResult> addCollection(@Field("username") String username,
+                                         @Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("collection/get")
+    Observable<HttpResultT<List<Collection>>> getCollections(@Field("username") String username);
+
  }

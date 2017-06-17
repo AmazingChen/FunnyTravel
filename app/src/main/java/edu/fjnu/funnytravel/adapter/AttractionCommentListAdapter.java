@@ -44,13 +44,17 @@ public class AttractionCommentListAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        if(holder == null) {
+        if (holder == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_attraction_comment, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        AttractionComment comment = mCommentList.get(position);
+        holder.mCommentAuthorName.setText(comment.getUsername());
+        holder.mCommentPublishTime.setText(comment.getTime());
+        holder.mCommentContent.setText(comment.getComment());
 
         return convertView;
     }
@@ -58,15 +62,16 @@ public class AttractionCommentListAdapter extends ArrayAdapter {
     static class ViewHolder {
         @BindView(R.id.comment_author_icon)
         CircleImageView mCommentAuthorIcon;
-
         @BindView(R.id.comment_author_name)
         TextView mCommentAuthorName;
-
         @BindView(R.id.comment_publish_time)
         TextView mCommentPublishTime;
+        @BindView(R.id.comment_content)
+        TextView mCommentContent;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
 }

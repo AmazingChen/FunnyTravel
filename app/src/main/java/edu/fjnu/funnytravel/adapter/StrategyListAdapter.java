@@ -58,13 +58,10 @@ public class StrategyListAdapter extends ArrayAdapter {
     static class ViewHolder {
         @BindView(R.id.strategy_img)
         ImageView mStrategyImg;
-
         @BindView(R.id.strategy_title)
         TextView mStrategyTitle;
-
         @BindView(R.id.strategy_publish_time)
         TextView mStrategyPublishTime;
-
         @BindView(R.id.strategy_author)
         TextView mStrategyAuthor;
 
