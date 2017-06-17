@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:id="@+id/rel_attraction_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="edu.sqchen.iubao.ui.activity.AttractionDetailActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/attraction_detail_header"
+                app:contentScrim="@color/blue"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                >
+
+                <ImageView
+                    android:id="@+id/attraction_detail_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/attraction_1"
+                    app:layout_collapseMode="parallax"
+                    />
+
+                <TextView
+                    android:id="@+id/attraction_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="东山风动石"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:textSize="18sp"
+                    android:textColor="#ADB2BB"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/attraction_detail_lin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="90dp"
+                    >
+                    <TextView
+                        android:id="@+id/attraction_detail_describe"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:text="翡翠谷是黄山脚下的一道峡谷，谷中之溪名为“碧玉溪”，源自炼丹、始信、天女诸峰。翡翠谷中怪岩耸立，流水潺潺，气势非凡。谷中分布着一百多个形态各异、大小不同的彩池，或晶明、或翠绿，变化多端，绚丽多彩，仿佛一颗颗色彩缤纷的翡翠，故名翡翠谷。"
+                        android:textColor="#ADB2BB"
+                        android:textSize="14sp"
+                        android:padding="20dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/attraction_detail_img_more"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_view_more"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/tool_bar_attraction_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:titleTextColor="@color/white"
+                    app:navigationIcon="@drawable/ic_back"
+                    app:layout_collapseMode="pin"
+                    >
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+
+
+            <com.ogaclejapan.smarttablayout.SmartTabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/blue"
+                app:layout_scrollFlags="scroll"
+                app:stl_customTabTextLayoutId="@layout/custom_tab"
+                app:stl_customTabTextViewId="@+id/custom_text"
+                app:stl_distributeEvenly="true"
+                app:stl_dividerColor="@color/white"
+                app:stl_dividerThickness="0dp"
+                app:stl_indicatorColor="@color/white"
+                app:stl_indicatorCornerRadius="0dp"
+                app:stl_indicatorGravity="bottom"
+                app:stl_indicatorInterpolation="linear"
+                app:stl_indicatorThickness="2.5dp"
+                app:stl_indicatorWithoutPadding="true"
+                app:stl_underlineColor="@android:color/transparent"
+                app:stl_underlineThickness="0dp" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <!--<com.github.clans.fab.FloatingActionMenu-->
+        <!--android:id="@+id/menu"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--fab:menu_fab_size="normal"-->
+        <!--fab:menu_showShadow="true"-->
+        <!--fab:menu_colorNormal="#4fc3f7"-->
+        <!--fab:menu_colorPressed="#03A9F4"-->
+        <!--fab:menu_icon="@drawable/ic_add"-->
+        <!--fab:menu_fab_label="菜单"-->
+        <!--&gt;-->
+
+        <!--<com.github.clans.fab.FloatingActionButton-->
+            <!--android:id="@+id/fab_item_add"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/ic_trip_normal"-->
+            <!--fab:fab_size="mini"-->
+            <!--fab:fab_label="加入行程"-->
+            <!--/>-->
+
+    <!--</com.github.clans.fab.FloatingActionMenu>-->
+    
+
+</RelativeLayout>

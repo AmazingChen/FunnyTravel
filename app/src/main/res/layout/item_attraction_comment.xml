@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/comment_author_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/user_icon_1"
+            />
+
+        <TextView
+            android:id="@+id/comment_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无敌小雯雯"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/comment_author_icon"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/comment_publish_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017-4-29"
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="非常方便，有了它既能轻松游玩，又能了解景点要是能更详细点就太好了。"
+            android:textSize="16sp"
+            android:textColor="@color/text_black_light"
+            android:layout_margin="12dp"
+            />
+
+    </LinearLayout>
+</LinearLayout>
