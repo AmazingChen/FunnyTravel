@@ -1,4 +1,4 @@
-package edu.sqchen.iubao.ui.activity;
+package edu.fjnu.funnytravel.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Color;

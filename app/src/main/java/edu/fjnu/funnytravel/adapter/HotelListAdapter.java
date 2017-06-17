@@ -1,4 +1,4 @@
-package edu.sqchen.iubao.adapter;
+package edu.fjnu.funnytravel.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
